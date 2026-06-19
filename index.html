@@ -158,7 +158,11 @@
   .dotnav a:hover .dlabel{opacity:1;transform:translateX(0)}
   .dotnav a.active .dot{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px rgba(255,210,63,.18),0 0 12px rgba(255,210,63,.55)}
   .dotnav a.active .dlabel{color:var(--gold)}
-  @media(max-width:880px){ .dotnav{display:none} }
+  @media(max-width:880px){
+    .dotnav{right:12px;gap:13px}
+    .dotnav .dot{width:9px;height:9px}
+    .dotnav .dlabel{display:none}
+  }
 
   section{padding:90px 0}
   .sec-head{text-align:center;max-width:680px;margin:0 auto 54px}
