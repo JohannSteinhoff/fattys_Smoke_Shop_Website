@@ -31,6 +31,9 @@
      mirrors the storefront mural & sign. */
   .logo{
     font-family:'Bagel Fat One',cursive;font-weight:400;text-transform:lowercase;
+    /* line-height + padding give descenders (e.g. the y) room inside the box so
+       the clipped gradient fill reaches them instead of cutting off */
+    line-height:1.05;padding-bottom:.2em;
     background:linear-gradient(178deg,#fff6c2 6%,#ffe66d 38%,#ffc21c 72%,#ffae00);
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffd23f;
     -webkit-text-stroke:2px #1c6b2e;
@@ -42,14 +45,20 @@
   /* Hero wordmark sits on a radiating rainbow burst like the wall mural.
      Kept tight behind the word and non-interactive so it never covers copy. */
   .logo-burst{position:relative;display:inline-block;isolation:isolate}
-  .logo-burst::before{content:"";position:absolute;inset:-14% -6%;z-index:-1;border-radius:50%;pointer-events:none;
+  /* ovular halo tied to the word box; the elliptical shape makes the spin visible */
+  .logo-burst::before{content:"";position:absolute;inset:-40% -24%;z-index:-1;border-radius:50%;pointer-events:none;
     background:repeating-radial-gradient(circle at 50% 50%,
-      #ff3b3b 0 14px,#ff8a00 14px 28px,#ffd23f 28px 42px,
-      #3ddc6e 42px 56px,#3a86ff 56px 70px,#9b5de5 70px 84px);
-    opacity:.42;filter:blur(2px) saturate(1.2);
-    -webkit-mask:radial-gradient(closest-side,#000 48%,transparent 92%);
-            mask:radial-gradient(closest-side,#000 48%,transparent 92%);
+      #ff3b3b 0 18px,#ff8a00 18px 36px,#ffd23f 36px 54px,#3ddc6e 54px 72px,
+      #06b6d4 72px 90px,#3a86ff 90px 108px,#9b5de5 108px 126px,#ff5dab 126px 144px);
+    opacity:.6;filter:blur(1px) saturate(2);mix-blend-mode:screen;
+    -webkit-mask:radial-gradient(closest-side,#000 0%,rgba(0,0,0,.55) 26%,rgba(0,0,0,.15) 50%,transparent 72%);
+            mask:radial-gradient(closest-side,#000 0%,rgba(0,0,0,.55) 26%,rgba(0,0,0,.15) 50%,transparent 72%);
     animation:spin 28s linear infinite}
+  /* On larger screens the title is big enough that the halo reads as dense/opaque;
+     drop the opacity (keep the crisp 2px blur) so it matches the lighter mobile look. */
+  @media(min-width:901px){
+    .logo-burst::before{opacity:.5}
+  }
   @keyframes spin{to{transform:rotate(360deg)}}
 
   /* Elephant mascot medallions (rainbow ring + dark disc) */
@@ -96,17 +105,17 @@
   .hero::after{content:"";position:absolute;inset:0;background:
     linear-gradient(180deg,rgba(18,13,28,.5),rgba(18,13,28,.92)),
     url('images/webp/01-storefront.webp') center/cover;mix-blend-mode:normal;opacity:.92}
-  .hero-inner{position:relative;z-index:1;padding:48px 24px 80px}
+  .hero-inner{position:relative;z-index:1;padding:32px 24px 80px}
   /* keep all hero copy above the spinning halo so text is never obscured */
   .hero .eyebrow,.hero .smokeshop,.hero .lead,.hero .btn-row,.hero .hero-meta{position:relative;z-index:3}
   .hero h1.logo{position:relative;z-index:2}
-  .eyebrow{display:inline-block;color:#2a1a05;font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.74rem;margin-bottom:18px;padding:7px 14px;border-radius:999px;background:var(--gold)}
+  .eyebrow{display:inline-block;color:#2a1a05;font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.74rem;margin-bottom:34px;padding:7px 14px;border-radius:999px;background:var(--gold)}
   .hero h1.logo{font-size:clamp(4rem,13vw,9rem);margin:6px 0 0}
   .smokeshop{font-family:'Fredoka',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.18em;
     font-size:clamp(1.3rem,3.4vw,2.1rem);color:#ff5d3b;
-    text-shadow:0 0 1px #b81d00,2px 2px 0 rgba(0,0,0,.35);margin:2px 0 6px}
+    text-shadow:0 0 1px #b81d00,2px 2px 0 rgba(0,0,0,.35);margin:18px 0 52px}
   .hero p.lead{max-width:640px;font-weight:700;line-height:1.4;color:var(--text);
-    font-size:clamp(1.2rem,2.2vw,1.55rem);margin:22px 0 36px;
+    font-size:clamp(1.2rem,2.2vw,1.55rem);margin:38px 0 60px;
     text-shadow:0 2px 12px rgba(0,0,0,.7)}
   /* keep just the ampersand trippy so the line stays readable */
   .hero p.lead .amp{background:var(--rainbow);background-size:200% auto;
@@ -119,7 +128,7 @@
   .btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 0 0 2px #ff3b3b,0 0 0 4px #3a86ff}
   .btn-ghost{border:1px solid #555;color:#fff}
   .btn-ghost:hover{border-color:var(--gold);color:var(--gold);box-shadow:0 0 0 2px #ff3b3b,0 0 0 4px #3a86ff}
-  .hero-meta{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+  .hero-meta{display:flex;gap:28px;margin-top:72px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
   .hero-meta b{color:var(--text)}
 
   section{padding:90px 0}
