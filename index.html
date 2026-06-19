@@ -177,6 +177,9 @@
   .cta .wrap{position:relative;z-index:1}
   .cta h2{font-size:clamp(2.6rem,6vw,4.4rem);color:#fff}
   .cta p{color:#d6cdf0;max-width:520px;margin:14px auto 30px}
+  /* CTA sits on a bright swirl — give the ghost button a solid dark backing for contrast */
+  .cta .btn-ghost{background:rgba(15,10,26,.72);border-color:rgba(255,255,255,.85);color:#fff;backdrop-filter:blur(4px)}
+  .cta .btn-ghost:hover{background:rgba(15,10,26,.9);border-color:var(--gold);color:var(--gold)}
 
   footer{background:#0c0818;border-top:3px solid transparent;border-image:var(--rainbow) 1;padding:54px 0 30px}
   .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:36px}
