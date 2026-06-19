@@ -82,7 +82,7 @@
   .navlinks a{color:var(--muted);transition:.2s}
   .navlinks a:hover{color:var(--gold)}
   .navcta{background:var(--gold);color:#2a1a05;padding:10px 18px;border-radius:999px;font-weight:700;font-size:.85rem;box-shadow:0 0 0 2px rgba(255,210,63,.25)}
-  .navcta:hover{background:var(--gold2);box-shadow:0 0 18px rgba(255,210,63,.5)}
+  .navcta:hover{background:var(--gold2);box-shadow:0 0 0 2px #ff3b3b,0 0 0 4px #3a86ff,0 0 18px rgba(255,210,63,.5)}
   .menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
 
   /* Hero */
@@ -94,7 +94,7 @@
   .hero::after{content:"";position:absolute;inset:0;background:
     linear-gradient(180deg,rgba(18,13,28,.5),rgba(18,13,28,.92)),
     url('images/webp/01-storefront.webp') center/cover;mix-blend-mode:normal;opacity:.92}
-  .hero-inner{position:relative;z-index:1;padding:80px 0}
+  .hero-inner{position:relative;z-index:1;padding:48px 0 80px}
   /* keep all hero copy above the spinning halo so text is never obscured */
   .hero .eyebrow,.hero .smokeshop,.hero .lead,.hero .btn-row,.hero .hero-meta{position:relative;z-index:3}
   .hero h1.logo{position:relative;z-index:2}
@@ -103,13 +103,20 @@
   .smokeshop{font-family:'Fredoka',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.18em;
     font-size:clamp(1.3rem,3.4vw,2.1rem);color:#ff5d3b;
     text-shadow:0 0 1px #b81d00,2px 2px 0 rgba(0,0,0,.35);margin:2px 0 6px}
-  .hero p.lead{max-width:560px;color:#d3d3db;font-size:1.15rem;margin:18px 0 32px}
+  .hero p.lead{max-width:640px;font-weight:700;line-height:1.4;color:var(--text);
+    font-size:clamp(1.2rem,2.2vw,1.55rem);margin:22px 0 36px;
+    text-shadow:0 2px 12px rgba(0,0,0,.7)}
+  /* keep just the ampersand trippy so the line stays readable */
+  .hero p.lead .amp{background:var(--rainbow);background-size:200% auto;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    font-weight:800;animation:hue 9s linear infinite}
+  @media(prefers-reduced-motion:reduce){.hero p.lead .amp{animation:none}}
   .btn-row{display:flex;gap:14px;flex-wrap:wrap}
   .btn{padding:14px 26px;border-radius:999px;font-weight:700;font-size:.95rem;transition:.2s;display:inline-flex;align-items:center;gap:8px}
   .btn-primary{background:var(--gold);color:#161616}
-  .btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+  .btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 0 0 2px #ff3b3b,0 0 0 4px #3a86ff}
   .btn-ghost{border:1px solid #555;color:#fff}
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);box-shadow:0 0 0 2px #ff3b3b,0 0 0 4px #3a86ff}
   .hero-meta{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
   .hero-meta b{color:var(--text)}
 
@@ -133,13 +140,13 @@
   .stat:nth-child(3) .n{color:#3a86ff}
   .stat .l{color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
   .about-img{border-radius:16px;overflow:hidden;border:3px solid transparent;background:var(--rainbow) border-box;background-size:200% auto;animation:hue 9s linear infinite;box-shadow:0 30px 60px rgba(0,0,0,.45)}
-  .about-img img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5}
+  .about-img img{width:100%;height:100%;object-fit:cover;object-position:25% center;display:block;aspect-ratio:4/5}
 
   /* Products */
   .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
   .pcard{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px 22px 26px;transition:.25s}
   .pcard::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--rainbow);background-size:200% auto;transform:scaleX(0);transform-origin:left;transition:transform .3s;animation:hue 9s linear infinite}
-  .pcard:hover{border-color:#5a3fa0;transform:translateY(-5px);background:#281a4d;box-shadow:0 16px 40px rgba(155,93,229,.25)}
+  .pcard:hover{border-color:#ffd23f;transform:translateY(-5px);background:#281a4d;box-shadow:0 0 0 2px #ff3b3b,0 0 0 4px #3a86ff,0 16px 40px rgba(155,93,229,.35)}
   .pcard:hover::before{transform:scaleX(1)}
   .pcard .ico{font-size:1.9rem;margin-bottom:14px}
   .pcard h3{font-size:1.5rem;font-weight:600}
@@ -232,7 +239,7 @@
     <span class="eyebrow">San Marcos, TX · Since 2007</span>
     <h1 class="logo logo-burst">fatty's</h1>
     <div class="smokeshop">Smoke Shop</div>
-    <p class="lead">Vapes, hookah, glass, CBD, kratom & more — a deep selection and straight-talking staff, right by Texas State University.</p>
+    <p class="lead">Vapes, hookah, glass, CBD, kratom <span class="amp">&amp;</span> more — a deep selection and a chill, clued-in crew. Less than 10 minutes from Texas State.</p>
     <div class="btn-row">
       <a href="#products" class="btn btn-primary">Browse the Selection →</a>
       <a href="#visit" class="btn btn-ghost">📍 Get Directions</a>
@@ -256,11 +263,11 @@
       <div class="stats">
         <div class="stat"><div class="n">2007</div><div class="l">Established</div></div>
         <div class="stat"><div class="n">8+</div><div class="l">Categories</div></div>
-        <div class="stat"><div class="n">15<span style="font-size:1.4rem">min</span></div><div class="l">From Campus</div></div>
+        <div class="stat"><div class="n">&lt;10<span style="font-size:1.4rem">min</span></div><div class="l">From Campus</div></div>
       </div>
     </div>
     <div class="about-media">
-      <div class="about-img"><img src="images/webp/03.webp" alt="Inside Fatty's Smoke Shop"></div>
+      <div class="about-img"><img src="images/webp/02.webp" alt="Inside Fatty's Smoke Shop"></div>
       <div class="mascot"><img src="assets/mascot.svg" alt="Fatty's elephant mascot" width="116" height="116"></div>
     </div>
   </div>
@@ -296,13 +303,13 @@
       <p>Take a look around before you stop by.</p>
     </div>
     <div class="grid-mason">
-      <img src="images/webp/02.webp" alt="Fatty's Smoke Shop">
       <img src="images/webp/09.webp" alt="Fatty's Smoke Shop">
       <img src="images/webp/04.webp" alt="Fatty's Smoke Shop">
       <img src="images/webp/06.webp" alt="Fatty's Smoke Shop">
       <img src="images/webp/05.webp" alt="Fatty's Smoke Shop">
       <img src="images/webp/07.webp" alt="Fatty's Smoke Shop">
       <img src="images/webp/01-storefront.webp" alt="Fatty's Smoke Shop storefront">
+      <img src="images/webp/03.webp" alt="Fatty's Smoke Shop">
     </div>
   </div>
 </section>
@@ -435,6 +442,10 @@
     margin:18px 0 24px;user-select:all}
   .modal-actions{display:flex;flex-direction:column;gap:12px}
   .modal-btn{justify-content:center;width:100%;cursor:pointer;font-family:inherit}
+  /* Copy Number was near-invisible on the dark card — give it a clear fill + brighter border */
+  #copyBtn{background:rgba(255,255,255,.08);border:1px solid #8a73c8;color:var(--text)}
+  #copyBtn:hover{background:rgba(255,210,63,.16);border-color:var(--gold);color:var(--gold);
+    box-shadow:0 0 0 2px #ff3b3b,0 0 0 4px #3a86ff}
   .copied-toast{margin-top:16px;color:#7ddc8e;font-size:.86rem;font-weight:600;opacity:0;
     transform:translateY(-4px);transition:.25s;height:0}
   .copied-toast.show{opacity:1;transform:translateY(0);height:auto}
