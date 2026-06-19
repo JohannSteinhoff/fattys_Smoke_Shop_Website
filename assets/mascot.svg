@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Fatty's elephant mascot">
+  <g stroke="#15233f" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- red panels behind ears (like the storefront mural) -->
+    <rect x="18" y="66" width="74" height="96" rx="16" fill="#ff2e63" stroke="none"/>
+    <rect x="148" y="66" width="74" height="96" rx="16" fill="#ff2e63" stroke="none"/>
+
+    <!-- ears -->
+    <ellipse cx="64" cy="120" rx="40" ry="52" transform="rotate(-12 64 120)" fill="#f6ecd8"/>
+    <ellipse cx="176" cy="120" rx="40" ry="52" transform="rotate(12 176 120)" fill="#f6ecd8"/>
+    <ellipse cx="66" cy="122" rx="20" ry="30" transform="rotate(-12 66 122)" fill="#ff7aa2" stroke-width="3"/>
+    <ellipse cx="174" cy="122" rx="20" ry="30" transform="rotate(12 174 122)" fill="#ff7aa2" stroke-width="3"/>
+
+    <!-- face -->
+    <ellipse cx="120" cy="134" rx="58" ry="60" fill="#f6ecd8"/>
+
+    <!-- crown -->
+    <path d="M120,40 L120,26"/>
+    <circle cx="120" cy="40" r="6" fill="#ffc21c"/>
+    <path d="M96,70 C96,36 144,36 144,70 Z" fill="#ffd23f"/>
+    <rect x="93" y="66" width="54" height="16" rx="5" fill="#ffc21c"/>
+    <path d="M104,67 a5,7 0 0 1 10,0 Z" fill="#15233f" stroke="none"/>
+    <path d="M115,64 a5,8 0 0 1 10,0 Z" fill="#15233f" stroke="none"/>
+    <path d="M126,67 a5,7 0 0 1 10,0 Z" fill="#15233f" stroke="none"/>
+
+    <!-- brows -->
+    <path d="M78,104 L102,114" fill="none"/>
+    <path d="M162,104 L138,114" fill="none"/>
+
+    <!-- eyes -->
+    <ellipse cx="94" cy="119" rx="12" ry="8" fill="#ffffff"/>
+    <ellipse cx="146" cy="119" rx="12" ry="8" fill="#ffffff"/>
+    <circle cx="96" cy="119" r="4" fill="#15233f" stroke="none"/>
+    <circle cx="144" cy="119" r="4" fill="#15233f" stroke="none"/>
+
+    <!-- tusks -->
+    <path d="M104,172 Q99,186 106,191 Q111,185 109,174 Z" fill="#ffffff"/>
+    <path d="M136,172 Q141,186 134,191 Q129,185 131,174 Z" fill="#ffffff"/>
+
+    <!-- trunk: navy outline under, cream fill over -->
+    <path d="M120,120 C116,150 110,180 118,196 C124,210 150,210 156,190 C160,178 150,172 145,178" fill="none" stroke="#15233f" stroke-width="22"/>
+    <path d="M120,120 C116,150 110,180 118,196 C124,210 150,210 156,190 C160,178 150,172 145,178" fill="none" stroke="#f6ecd8" stroke-width="13"/>
+    <!-- trunk ridges -->
+    <g stroke="#15233f" stroke-width="3" fill="none">
+      <path d="M110,136 L126,134"/>
+      <path d="M108,148 L125,146"/>
+      <path d="M107,160 L124,159"/>
+      <path d="M108,172 L125,171"/>
+      <path d="M112,184 L128,186"/>
+    </g>
+  </g>
+</svg>

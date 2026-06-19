@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fatty's Smoke Shop — San Marcos, TX</title>
 <meta name="description" content="Fatty's Smoke Shop in San Marcos, TX. Vapes, hookah, glass, CBD, kratom, cigars & accessories since 2007. Right by Texas State University.">
+<link rel="icon" type="image/svg+xml" href="assets/mascot.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -37,17 +38,28 @@
       drop-shadow(0 2px 0 #9b5de5) drop-shadow(0 -2px 0 #06d6a0)
       drop-shadow(0 0 10px rgba(255,120,210,.45));
   }
-  /* Hero wordmark sits on a radiating rainbow burst like the wall mural */
+  /* Hero wordmark sits on a radiating rainbow burst like the wall mural.
+     Kept tight behind the word and non-interactive so it never covers copy. */
   .logo-burst{position:relative;display:inline-block;isolation:isolate}
-  .logo-burst::before{content:"";position:absolute;inset:-38% -14%;z-index:-1;border-radius:50%;
-    background:repeating-radial-gradient(circle at 42% 55%,
-      #ff3b3b 0 16px,#ff8a00 16px 32px,#ffd23f 32px 48px,
-      #3ddc6e 48px 64px,#3a86ff 64px 80px,#9b5de5 80px 96px);
-    opacity:.5;filter:blur(2px) saturate(1.2);
-    -webkit-mask:radial-gradient(closest-side,#000 55%,transparent 100%);
-            mask:radial-gradient(closest-side,#000 55%,transparent 100%);
+  .logo-burst::before{content:"";position:absolute;inset:-14% -6%;z-index:-1;border-radius:50%;pointer-events:none;
+    background:repeating-radial-gradient(circle at 50% 50%,
+      #ff3b3b 0 14px,#ff8a00 14px 28px,#ffd23f 28px 42px,
+      #3ddc6e 42px 56px,#3a86ff 56px 70px,#9b5de5 70px 84px);
+    opacity:.42;filter:blur(2px) saturate(1.2);
+    -webkit-mask:radial-gradient(closest-side,#000 48%,transparent 92%);
+            mask:radial-gradient(closest-side,#000 48%,transparent 92%);
     animation:spin 28s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* Elephant mascot medallions (rainbow ring + dark disc) */
+  .mascot{border-radius:50%;padding:6px;background:var(--rainbow);background-size:200% auto;
+    animation:hue 9s linear infinite;box-shadow:0 12px 34px rgba(0,0,0,.5)}
+  .mascot img{display:block;width:100%;height:100%;border-radius:50%;
+    background:radial-gradient(circle at 50% 42%,#2a1c45,#160f28)}
+  .about-media{position:relative}
+  .about-media .mascot{position:absolute;left:-22px;bottom:-22px;width:128px;height:128px}
+  .cta-mascot{width:120px;height:120px;margin:0 auto 22px}
+  .foot-mascot{width:54px;height:54px;display:inline-block;vertical-align:middle;margin-right:12px}
 
   /* Rainbow utilities */
   .rainbow-text{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;
@@ -81,6 +93,9 @@
     linear-gradient(180deg,rgba(18,13,28,.5),rgba(18,13,28,.92)),
     url('images/webp/01-storefront.webp') center/cover;mix-blend-mode:normal;opacity:.92}
   .hero-inner{position:relative;z-index:1;padding:80px 0}
+  /* keep all hero copy above the spinning halo so text is never obscured */
+  .hero .eyebrow,.hero .smokeshop,.hero .lead,.hero .btn-row,.hero .hero-meta{position:relative;z-index:3}
+  .hero h1.logo{position:relative;z-index:2}
   .eyebrow{display:inline-block;color:#2a1a05;font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.74rem;margin-bottom:18px;padding:7px 14px;border-radius:999px;background:var(--gold)}
   .hero h1.logo{font-size:clamp(4rem,13vw,9rem);margin:6px 0 0}
   .smokeshop{font-family:'Fredoka',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.18em;
@@ -239,7 +254,10 @@
         <div class="stat"><div class="n">15<span style="font-size:1.4rem">min</span></div><div class="l">From Campus</div></div>
       </div>
     </div>
-    <div class="about-img"><img src="images/webp/03.webp" alt="Inside Fatty's Smoke Shop"></div>
+    <div class="about-media">
+      <div class="about-img"><img src="images/webp/03.webp" alt="Inside Fatty's Smoke Shop"></div>
+      <div class="mascot"><img src="assets/mascot.svg" alt="Fatty's elephant mascot" width="116" height="116"></div>
+    </div>
   </div>
 </section>
 
@@ -336,6 +354,7 @@
 <!-- CTA -->
 <section class="cta">
   <div class="wrap">
+    <div class="mascot cta-mascot"><img src="assets/mascot.svg" alt="Fatty's elephant mascot" width="108" height="108"></div>
     <span class="eyebrow">Stop By Today</span>
     <h2>See You At Fatty's</h2>
     <p>Open late, seven days a week. Bring a valid 21+ ID and come find your new favorite.</p>
@@ -351,7 +370,7 @@
     <div class="disclaimer">⚠ Tobacco / nicotine / alternative products are for adults 21 years of age and older. Underage sales are strictly prohibited. Not for sale to minors. These statements have not been evaluated by the FDA.</div>
     <div class="foot-grid">
       <div>
-        <div class="foot-brand logo">fatty's</div>
+        <div style="display:flex;align-items:center"><img class="foot-mascot" src="assets/mascot.svg" alt="Fatty's elephant mascot" width="54" height="54"><span class="foot-brand logo">fatty's</span></div>
         <p>San Marcos's neighborhood smoke shop since 2007. Vapes, hookah, glass, CBD, kratom, cigars & accessories.</p>
       </div>
       <div>
