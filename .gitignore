@@ -1,0 +1,17 @@
+# Python (scraping tooling — not part of the site)
+.venv/
+__pycache__/
+*.pyc
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+.idea/
+
+# Scratch
+*.tmp
+photo_urls.txt
+page.html

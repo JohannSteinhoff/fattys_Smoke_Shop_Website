@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatty's Smoke Shop — San Marcos, TX</title>
+<meta name="description" content="Fatty's Smoke Shop in San Marcos, TX. Vapes, hookah, glass, CBD, kratom, cigars & accessories since 2007. Right by Texas State University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0e11; --bg2:#16161b; --card:#1c1c23; --line:#2a2a33;
+    --text:#ececf1; --muted:#9a9aa6; --gold:#e8b54a; --gold2:#f4cf7a;
+    --ember:#d8542a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.display{font-family:'Bebas Neue',sans-serif;letter-spacing:.02em;line-height:1;font-weight:400}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .gold{color:var(--gold)}
+
+  /* Age banner */
+  .agebar{background:var(--ember);color:#fff;text-align:center;font-size:.78rem;font-weight:600;letter-spacing:.04em;padding:7px 12px;text-transform:uppercase}
+
+  /* Nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(14,14,17,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{font-family:'Bebas Neue';font-size:1.9rem;letter-spacing:.06em}
+  .brand .gold{margin-left:2px}
+  .navlinks{display:flex;gap:30px;font-size:.92rem;font-weight:500}
+  .navlinks a{color:var(--muted);transition:.2s}
+  .navlinks a:hover{color:var(--gold)}
+  .navcta{background:var(--gold);color:#161616;padding:10px 18px;border-radius:999px;font-weight:700;font-size:.85rem}
+  .navcta:hover{background:var(--gold2)}
+  .menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+
+  /* Hero */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,17,.55),rgba(14,14,17,.92)),url('images/webp/01-storefront.webp') center/cover;filter:saturate(1.05)}
+  .hero-inner{position:relative;padding:80px 0}
+  .eyebrow{display:inline-block;color:var(--gold);font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:.78rem;margin-bottom:18px;border:1px solid var(--line);padding:7px 14px;border-radius:999px;background:rgba(0,0,0,.3)}
+  .hero h1{font-size:clamp(3.4rem,9vw,7rem);text-shadow:0 4px 30px rgba(0,0,0,.5)}
+  .hero p.lead{max-width:560px;color:#d3d3db;font-size:1.15rem;margin:18px 0 32px}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:14px 26px;border-radius:999px;font-weight:700;font-size:.95rem;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary{background:var(--gold);color:#161616}
+  .btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid #555;color:#fff}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .hero-meta{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+  .hero-meta b{color:var(--text)}
+
+  section{padding:90px 0}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 54px}
+  .sec-head .eyebrow{margin-bottom:14px}
+  .sec-head h2{font-size:clamp(2.4rem,5vw,3.6rem)}
+  .sec-head p{color:var(--muted);margin-top:12px}
+
+  /* About */
+  .about{background:var(--bg2)}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
+  .about h2{font-size:clamp(2.4rem,5vw,3.6rem);margin-bottom:18px}
+  .about p{color:#c8c8d2;margin-bottom:16px}
+  .stats{display:flex;gap:34px;margin-top:28px}
+  .stat .n{font-family:'Bebas Neue';font-size:2.6rem;color:var(--gold);line-height:1}
+  .stat .l{color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
+  .about-img{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+  .about-img img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5}
+
+  /* Products */
+  .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 22px;transition:.25s}
+  .pcard:hover{border-color:var(--gold);transform:translateY(-4px);background:#20202a}
+  .pcard .ico{font-size:1.9rem;margin-bottom:14px}
+  .pcard h3{font-size:1.5rem;letter-spacing:.04em}
+  .pcard p{color:var(--muted);font-size:.88rem;margin-top:4px}
+
+  /* Gallery */
+  .gallery{background:var(--bg2)}
+  .grid-mason{columns:3;column-gap:16px}
+  .grid-mason img{width:100%;border-radius:12px;margin-bottom:16px;display:block;border:1px solid var(--line);transition:.3s;cursor:pointer}
+  .grid-mason img:hover{transform:scale(1.02);border-color:var(--gold)}
+
+  /* Visit */
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .infobox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px}
+  .infobox h3{font-size:1.7rem;margin-bottom:20px;letter-spacing:.04em}
+  .hours{width:100%;border-collapse:collapse}
+  .hours td{padding:11px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .hours td:last-child{text-align:right;color:var(--gold);font-weight:600}
+  .hours tr:last-child td{border-bottom:0}
+  .contact-line{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.98rem}
+  .contact-line:last-child{border-bottom:0}
+  .contact-line .ic{color:var(--gold);width:24px;text-align:center}
+  .mapbox{border-radius:16px;overflow:hidden;border:1px solid var(--line);min-height:340px}
+  .mapbox iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.3) invert(.9) hue-rotate(180deg)}
+
+  /* Reviews */
+  .reviews{background:var(--bg2)}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .rcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+  .stars{color:var(--gold);font-size:1.05rem;letter-spacing:2px;margin-bottom:12px}
+  .rcard p{color:#d3d3db;font-size:.95rem;font-style:italic}
+  .rcard .who{margin-top:16px;color:var(--muted);font-size:.83rem;font-style:normal}
+
+  /* CTA */
+  .cta{text-align:center;background:linear-gradient(135deg,#1d1a12,#0e0e11)}
+  .cta h2{font-size:clamp(2.6rem,6vw,4.4rem)}
+  .cta p{color:var(--muted);max-width:520px;margin:14px auto 30px}
+
+  footer{background:#0a0a0d;border-top:1px solid var(--line);padding:54px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:36px}
+  .foot-grid h4{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:16px;font-family:'Inter';font-weight:700}
+  .foot-grid a,.foot-grid p{color:var(--muted);font-size:.92rem;display:block;margin-bottom:9px}
+  .foot-grid a:hover{color:var(--gold)}
+  .foot-brand{font-family:'Bebas Neue';font-size:2rem;letter-spacing:.06em;margin-bottom:10px}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#67676f;font-size:.8rem}
+  .disclaimer{background:#161109;border:1px solid #3a2c12;color:#c9a45e;font-size:.8rem;border-radius:10px;padding:14px 18px;margin-bottom:30px;text-align:center}
+
+  @media(max-width:900px){
+    .navlinks,.navcta{display:none}
+    .menu-toggle{display:block}
+    .about-grid,.visit-grid{grid-template-columns:1fr}
+    .prod-grid{grid-template-columns:repeat(2,1fr)}
+    .rev-grid{grid-template-columns:1fr}
+    .grid-mason{columns:2}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){
+    .grid-mason{columns:1}.prod-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr}
+    .stats{flex-wrap:wrap;gap:22px}
+  }
+</style>
+</head>
+<body>
+
+<div class="agebar">⚠ You must be 21+ to enter. Valid government-issued ID required for all purchases.</div>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">FATTY'S<span class="gold">.</span></a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a href="tel:+15126676413" class="navcta">Call (512) 667-6413</a>
+    <button class="menu-toggle" onclick="document.querySelector('.navlinks').style.display='flex'">☰</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">San Marcos, TX · Since 2007</span>
+    <h1>Your Neighborhood<br>Smoke Shop</h1>
+    <p class="lead">Vapes, hookah, glass, CBD, kratom & more — a deep selection and straight-talking staff, right by Texas State University.</p>
+    <div class="btn-row">
+      <a href="#products" class="btn btn-primary">Browse the Selection →</a>
+      <a href="#visit" class="btn btn-ghost">📍 Get Directions</a>
+    </div>
+    <div class="hero-meta">
+      <span>⭐ <b>4.0</b> · 37 Yelp reviews</span>
+      <span>🕒 Open <b>til Midnight</b></span>
+      <span>📦 <b>8+</b> product categories</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow">Our Story</span>
+      <h2>A San Marcos staple since 2007</h2>
+      <p>Fatty's Smoke Shop has been serving San Marcos and the Texas State community for over 15 years. What started as a neighborhood tobacco shop has grown into a one-stop destination for everything from premium glass to the latest disposables.</p>
+      <p>We're known for a diverse inventory, fair pricing, frequent in-store promotions, and a friendly crew that's happy to point you to the right product — whether you're a first-timer or a longtime regular.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">2007</div><div class="l">Established</div></div>
+        <div class="stat"><div class="n">8+</div><div class="l">Categories</div></div>
+        <div class="stat"><div class="n">15<span style="font-size:1.4rem">min</span></div><div class="l">From Campus</div></div>
+      </div>
+    </div>
+    <div class="about-img"><img src="images/webp/03.webp" alt="Inside Fatty's Smoke Shop"></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What We Carry</span>
+      <h2>Everything Under One Roof</h2>
+      <p>From everyday essentials to hard-to-find pieces — if you smoke it, vape it, or roll it, we've probably got it.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="pcard"><div class="ico">💨</div><h3>Vapes & Disposables</h3><p>Top disposable brands, pods & devices</p></div>
+      <div class="pcard"><div class="ico">🌀</div><h3>Hookah & Shisha</h3><p>Hookahs, bowls, coals & flavors</p></div>
+      <div class="pcard"><div class="ico">🧊</div><h3>Glass & Water Pipes</h3><p>Hand pipes, rigs & quality glass</p></div>
+      <div class="pcard"><div class="ico">🌿</div><h3>CBD & Delta-8</h3><p>Edibles, flower, carts & tinctures</p></div>
+      <div class="pcard"><div class="ico">🍃</div><h3>Kratom</h3><p>Powders, capsules & extracts</p></div>
+      <div class="pcard"><div class="ico">🚬</div><h3>Cigars & Tobacco</h3><p>Singles, packs & rolling tobacco</p></div>
+      <div class="pcard"><div class="ico">🧪</div><h3>E-Liquid</h3><p>Wide range of flavors & nic levels</p></div>
+      <div class="pcard"><div class="ico">📦</div><h3>Accessories</h3><p>Papers, grinders, lighters & more</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Step Inside</span>
+      <h2>The Shop</h2>
+      <p>Take a look around before you stop by.</p>
+    </div>
+    <div class="grid-mason">
+      <img src="images/webp/02.webp" alt="Fatty's Smoke Shop">
+      <img src="images/webp/09.webp" alt="Fatty's Smoke Shop">
+      <img src="images/webp/04.webp" alt="Fatty's Smoke Shop">
+      <img src="images/webp/06.webp" alt="Fatty's Smoke Shop">
+      <img src="images/webp/05.webp" alt="Fatty's Smoke Shop">
+      <img src="images/webp/07.webp" alt="Fatty's Smoke Shop">
+      <img src="images/webp/01-storefront.webp" alt="Fatty's Smoke Shop storefront">
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Word On The Street</span>
+      <h2>What Customers Say</h2>
+      <p>Representative of common themes from public reviews.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rcard"><div class="stars">★★★★★</div><p>"Huge selection of glass and vape supplies, and the staff actually know their stuff. My go-to spot in San Marcos."</p><div class="who">— Texas State student</div></div>
+      <div class="rcard"><div class="stars">★★★★★</div><p>"Friendly, welcoming, and always running deals. They helped me find exactly what I needed without any pressure."</p><div class="who">— Local regular</div></div>
+      <div class="rcard"><div class="stars">★★★★☆</div><p>"Great prices and great hours — open late, which is clutch. Solid neighborhood shop."</p><div class="who">— San Marcos resident</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Come See Us</span>
+      <h2>Hours & Location</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="infobox">
+        <h3>Store Hours</h3>
+        <table class="hours">
+          <tr><td>Monday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr><td>Tuesday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr><td>Wednesday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr><td>Thursday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr><td>Friday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr><td>Saturday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr><td>Sunday</td><td>10:00 AM – 11:00 PM</td></tr>
+        </table>
+        <div style="margin-top:24px">
+          <div class="contact-line"><span class="ic">📍</span> 1330 Aquarena Springs Dr, Ste 105, San Marcos, TX 78666</div>
+          <div class="contact-line"><span class="ic">📞</span> <a href="tel:+15126676413">(512) 667-6413</a></div>
+          <div class="contact-line"><span class="ic">📸</span> <a href="https://www.instagram.com/fattys_smokeshop/" target="_blank" rel="noopener">@fattys_smokeshop</a></div>
+        </div>
+      </div>
+      <div class="mapbox">
+        <iframe loading="lazy" title="Map to Fatty's Smoke Shop"
+          src="https://www.google.com/maps?q=1330+Aquarena+Springs+Dr+Ste+105,+San+Marcos,+TX+78666&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <span class="eyebrow">Stop By Today</span>
+    <h2>See You At Fatty's</h2>
+    <p>Open late, seven days a week. Bring a valid 21+ ID and come find your new favorite.</p>
+    <div class="btn-row" style="justify-content:center">
+      <a href="https://www.google.com/maps?q=1330+Aquarena+Springs+Dr+Ste+105,+San+Marcos,+TX+78666" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
+      <a href="tel:+15126676413" class="btn btn-ghost">📞 Call Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="disclaimer">⚠ Tobacco / nicotine / alternative products are for adults 21 years of age and older. Underage sales are strictly prohibited. Not for sale to minors. These statements have not been evaluated by the FDA.</div>
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">FATTY'S<span class="gold">.</span></div>
+        <p>San Marcos's neighborhood smoke shop since 2007. Vapes, hookah, glass, CBD, kratom, cigars & accessories.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#visit">Hours & Location</a>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <a href="https://www.google.com/maps?q=1330+Aquarena+Springs+Dr+Ste+105,+San+Marcos,+TX+78666" target="_blank" rel="noopener">1330 Aquarena Springs Dr<br>Ste 105, San Marcos, TX</a>
+        <a href="tel:+15126676413">(512) 667-6413</a>
+        <a href="https://www.instagram.com/fattys_smokeshop/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Fatty's Smoke Shop · San Marcos, TX</span>
+      <span>Concept mockup · You must be 21+ to purchase</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
