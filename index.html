@@ -149,7 +149,7 @@
       <a href="#reviews">Reviews</a>
       <a href="#visit">Visit</a>
     </div>
-    <a href="tel:+15126676413" class="navcta">Call (512) 667-6413</a>
+    <button type="button" class="navcta" onclick="openCall()">📞 Call (512) 667-6413</button>
     <button class="menu-toggle" onclick="document.querySelector('.navlinks').style.display='flex'">☰</button>
   </nav>
 </header>
@@ -288,7 +288,7 @@
     <p>Open late, seven days a week. Bring a valid 21+ ID and come find your new favorite.</p>
     <div class="btn-row" style="justify-content:center">
       <a href="https://www.google.com/maps?q=1330+Aquarena+Springs+Dr+Ste+105,+San+Marcos,+TX+78666" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
-      <a href="tel:+15126676413" class="btn btn-ghost">📞 Call Us</a>
+      <button type="button" class="btn btn-ghost" onclick="openCall()">📞 Call Us</button>
     </div>
   </div>
 </section>
@@ -321,6 +321,90 @@
     </div>
   </div>
 </footer>
+
+<!-- CALL MODAL -->
+<div class="modal-overlay" id="callModal" role="dialog" aria-modal="true" aria-labelledby="callTitle" hidden>
+  <div class="modal">
+    <button class="modal-close" aria-label="Close" onclick="closeCall()">&times;</button>
+    <div class="modal-ico">📞</div>
+    <h3 id="callTitle">Call Fatty's</h3>
+    <p class="modal-sub">We're happy to help — give us a ring.</p>
+    <div class="modal-number" id="phoneText">(512) 667-6413</div>
+    <div class="modal-actions">
+      <a href="tel:+15126676413" class="btn btn-primary modal-btn">📞 Call Now</a>
+      <button type="button" class="btn btn-ghost modal-btn" id="copyBtn" onclick="copyPhone()">⧉ Copy Number</button>
+    </div>
+    <div class="copied-toast" id="copiedToast">Copied to clipboard ✓</div>
+  </div>
+</div>
+
+<style>
+  button.navcta{border:0}
+  .modal-overlay{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;
+    background:rgba(6,6,9,.72);backdrop-filter:blur(6px);opacity:0;transition:opacity .2s ease}
+  .modal-overlay[hidden]{display:none}
+  .modal-overlay.show{opacity:1}
+  .modal{position:relative;width:100%;max-width:380px;background:var(--card);border:1px solid var(--line);
+    border-radius:20px;padding:38px 30px 30px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.6);
+    transform:translateY(12px) scale(.97);transition:transform .22s cubic-bezier(.2,.8,.2,1)}
+  .modal-overlay.show .modal{transform:translateY(0) scale(1)}
+  .modal-close{position:absolute;top:14px;right:16px;background:none;border:0;color:var(--muted);
+    font-size:1.7rem;line-height:1;cursor:pointer;transition:.2s}
+  .modal-close:hover{color:var(--gold)}
+  .modal-ico{font-size:2.4rem;margin-bottom:6px}
+  .modal h3{font-size:2rem;letter-spacing:.04em}
+  .modal-sub{color:var(--muted);font-size:.92rem;margin-top:4px}
+  .modal-number{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.05em;color:var(--gold);
+    margin:18px 0 24px;user-select:all}
+  .modal-actions{display:flex;flex-direction:column;gap:12px}
+  .modal-btn{justify-content:center;width:100%;cursor:pointer;font-family:inherit}
+  .copied-toast{margin-top:16px;color:#7ddc8e;font-size:.86rem;font-weight:600;opacity:0;
+    transform:translateY(-4px);transition:.25s;height:0}
+  .copied-toast.show{opacity:1;transform:translateY(0);height:auto}
+</style>
+
+<script>
+  var PHONE_DISPLAY = "(512) 667-6413";
+  var callModal = document.getElementById('callModal');
+
+  function openCall(){
+    callModal.hidden = false;
+    requestAnimationFrame(function(){ callModal.classList.add('show'); });
+    document.addEventListener('keydown', escClose);
+  }
+  function closeCall(){
+    callModal.classList.remove('show');
+    document.removeEventListener('keydown', escClose);
+    setTimeout(function(){ callModal.hidden = true; resetToast(); }, 200);
+  }
+  function escClose(e){ if(e.key === 'Escape') closeCall(); }
+  // close when clicking the dark backdrop (but not the dialog itself)
+  callModal.addEventListener('click', function(e){ if(e.target === callModal) closeCall(); });
+
+  function resetToast(){
+    var t = document.getElementById('copiedToast');
+    t.classList.remove('show'); t.textContent = "Copied to clipboard ✓";
+  }
+  function copyPhone(){
+    var toast = document.getElementById('copiedToast');
+    function done(ok){
+      toast.textContent = ok ? "Copied to clipboard ✓" : "Press Ctrl+C to copy";
+      toast.classList.add('show');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(PHONE_DISPLAY).then(function(){done(true);}, function(){fallbackCopy(done);});
+    } else { fallbackCopy(done); }
+  }
+  function fallbackCopy(done){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = PHONE_DISPLAY; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta); done(ok);
+    }catch(e){ done(false); }
+  }
+</script>
 
 </body>
 </html>
