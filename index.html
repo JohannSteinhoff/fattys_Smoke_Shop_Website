@@ -83,7 +83,8 @@
   .navlinks a:hover{color:var(--gold)}
   .navcta{background:var(--gold);color:#2a1a05;padding:10px 18px;border-radius:999px;font-weight:700;font-size:.85rem;box-shadow:0 0 0 2px rgba(255,210,63,.25)}
   .navcta:hover{background:var(--gold2);box-shadow:0 0 0 2px #ff3b3b,0 0 0 4px #3a86ff,0 0 18px rgba(255,210,63,.5)}
-  .menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+  .menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer;line-height:1}
+  .navlinks-call{display:none}
 
   /* Hero */
   .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden}
@@ -200,8 +201,19 @@
   .disclaimer{background:#161109;border:1px solid #3a2c12;color:#c9a45e;font-size:.8rem;border-radius:10px;padding:14px 18px;margin-bottom:30px;text-align:center}
 
   @media(max-width:900px){
-    .navlinks,.navcta{display:none}
+    .navcta{display:none}
     .menu-toggle{display:block}
+    /* Full-width dropdown menu: stacked links with big tap targets */
+    .navlinks{display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;gap:0;align-items:stretch;font-size:1.05rem;
+      background:rgba(18,13,28,.98);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);box-shadow:0 24px 48px rgba(0,0,0,.55)}
+    .navlinks.open{display:flex}
+    .navlinks a{padding:18px 24px;color:var(--text);border-bottom:1px solid rgba(255,255,255,.06)}
+    .navlinks a:active{background:rgba(255,255,255,.05)}
+    .navlinks-call{display:flex;justify-content:center;align-items:center;gap:8px;
+      margin:16px 24px 20px;padding:15px;border-radius:999px;
+      background:var(--gold);color:#2a1a05;font-weight:700;font-size:.95rem}
     .about-grid,.visit-grid{grid-template-columns:1fr}
     .prod-grid{grid-template-columns:repeat(2,1fr)}
     .rev-grid{grid-template-columns:1fr}
@@ -221,15 +233,16 @@
 <header>
   <nav class="wrap">
     <a href="#top" class="brand logo">fatty's</a>
-    <div class="navlinks">
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#visit">Visit</a>
+    <div class="navlinks" id="navlinks">
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#products" onclick="closeMenu()">Products</a>
+      <a href="#gallery" onclick="closeMenu()">Gallery</a>
+      <a href="#reviews" onclick="closeMenu()">Reviews</a>
+      <a href="#visit" onclick="closeMenu()">Visit</a>
+      <button type="button" class="navlinks-call" onclick="closeMenu();openCall()">📞 Call (512) 667-6413</button>
     </div>
     <button type="button" class="navcta" onclick="openCall()">📞 Call (512) 667-6413</button>
-    <button class="menu-toggle" onclick="document.querySelector('.navlinks').style.display='flex'">☰</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks" onclick="toggleMenu()">☰</button>
   </nav>
 </header>
 
@@ -452,6 +465,23 @@
 </style>
 
 <script>
+  // Mobile dropdown menu
+  var navLinksEl = document.getElementById('navlinks');
+  var menuToggleEl = document.getElementById('menuToggle');
+  function toggleMenu(){
+    var open = navLinksEl.classList.toggle('open');
+    menuToggleEl.textContent = open ? '✕' : '☰';
+    menuToggleEl.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggleEl.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  function closeMenu(){
+    if(!navLinksEl.classList.contains('open')) return;
+    navLinksEl.classList.remove('open');
+    menuToggleEl.textContent = '☰';
+    menuToggleEl.setAttribute('aria-expanded', 'false');
+    menuToggleEl.setAttribute('aria-label', 'Open menu');
+  }
+
   var PHONE_DISPLAY = "(512) 667-6413";
   var callModal = document.getElementById('callModal');
 
