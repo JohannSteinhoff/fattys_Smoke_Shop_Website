@@ -2,7 +2,7 @@
 
 A concept marketing website for **Fatty's Smoke Shop**, San Marcos, TX.
 
-🔗 **Live site:** _add your GitHub Pages URL here after deploying_
+🔗 **Live site:** https://johannsteinhoff.github.io/fattys_Smoke_Shop_Website/
 
 ## About
 
