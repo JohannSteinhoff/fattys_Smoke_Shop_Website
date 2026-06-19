@@ -7,42 +7,85 @@
 <meta name="description" content="Fatty's Smoke Shop in San Marcos, TX. Vapes, hookah, glass, CBD, kratom, cigars & accessories since 2007. Right by Texas State University.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0e0e11; --bg2:#16161b; --card:#1c1c23; --line:#2a2a33;
-    --text:#ececf1; --muted:#9a9aa6; --gold:#e8b54a; --gold2:#f4cf7a;
-    --ember:#d8542a;
+    --bg:#120d1c; --bg2:#181030; --card:#20153f; --line:#3a2a63;
+    --text:#f3eeff; --muted:#b3a6d4; --gold:#ffd23f; --gold2:#ffe66d;
+    --ember:#ff5d3b; --green:#1f9d3f;
+    --rainbow:linear-gradient(90deg,#ff3b3b,#ff8a00,#ffd23f,#3ddc6e,#3a86ff,#9b5de5);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-  h1,h2,h3,.display{font-family:'Bebas Neue',sans-serif;letter-spacing:.02em;line-height:1;font-weight:400}
+  h1,h2,h3,.display{font-family:'Fredoka',sans-serif;letter-spacing:.01em;line-height:1.05;font-weight:600}
   a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer}
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
   .gold{color:var(--gold)}
+
+  /* ===== Recreated "fatty's" bubble wordmark ===== */
+  /* Groovy 70s bubble lettering: gold fill, green outline, rainbow halo —
+     mirrors the storefront mural & sign. */
+  .logo{
+    font-family:'Bagel Fat One',cursive;font-weight:400;text-transform:lowercase;
+    background:linear-gradient(178deg,#fff6c2 6%,#ffe66d 38%,#ffc21c 72%,#ffae00);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffd23f;
+    -webkit-text-stroke:2px #1c6b2e;
+    filter:
+      drop-shadow(2px 0 0 #e63946) drop-shadow(-2px 0 0 #3a86ff)
+      drop-shadow(0 2px 0 #9b5de5) drop-shadow(0 -2px 0 #06d6a0)
+      drop-shadow(0 0 10px rgba(255,120,210,.45));
+  }
+  /* Hero wordmark sits on a radiating rainbow burst like the wall mural */
+  .logo-burst{position:relative;display:inline-block;isolation:isolate}
+  .logo-burst::before{content:"";position:absolute;inset:-38% -14%;z-index:-1;border-radius:50%;
+    background:repeating-radial-gradient(circle at 42% 55%,
+      #ff3b3b 0 16px,#ff8a00 16px 32px,#ffd23f 32px 48px,
+      #3ddc6e 48px 64px,#3a86ff 64px 80px,#9b5de5 80px 96px);
+    opacity:.5;filter:blur(2px) saturate(1.2);
+    -webkit-mask:radial-gradient(closest-side,#000 55%,transparent 100%);
+            mask:radial-gradient(closest-side,#000 55%,transparent 100%);
+    animation:spin 28s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* Rainbow utilities */
+  .rainbow-text{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;background-size:200% auto;animation:hue 9s linear infinite}
+  @keyframes hue{to{background-position:200% center}}
+  .rainbow-rule{height:5px;border:0;border-radius:99px;background:var(--rainbow);background-size:200% auto;animation:hue 9s linear infinite;margin:0 auto}
+  @media(prefers-reduced-motion:reduce){.logo-burst::before,.rainbow-text,.rainbow-rule{animation:none}}
 
   /* Age banner */
   .agebar{background:var(--ember);color:#fff;text-align:center;font-size:.78rem;font-weight:600;letter-spacing:.04em;padding:7px 12px;text-transform:uppercase}
 
   /* Nav */
-  header{position:sticky;top:0;z-index:50;background:rgba(14,14,17,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  header{position:sticky;top:0;z-index:50;background:rgba(18,13,28,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  header::after{content:"";display:block;height:3px;background:var(--rainbow);background-size:200% auto;animation:hue 9s linear infinite}
   nav{display:flex;align-items:center;justify-content:space-between;height:70px}
-  .brand{font-family:'Bebas Neue';font-size:1.9rem;letter-spacing:.06em}
-  .brand .gold{margin-left:2px}
-  .navlinks{display:flex;gap:30px;font-size:.92rem;font-weight:500}
+  .brand{font-size:2.2rem;line-height:1}
+  .navlinks{display:flex;gap:30px;font-size:.92rem;font-weight:600}
   .navlinks a{color:var(--muted);transition:.2s}
   .navlinks a:hover{color:var(--gold)}
-  .navcta{background:var(--gold);color:#161616;padding:10px 18px;border-radius:999px;font-weight:700;font-size:.85rem}
-  .navcta:hover{background:var(--gold2)}
+  .navcta{background:var(--gold);color:#2a1a05;padding:10px 18px;border-radius:999px;font-weight:700;font-size:.85rem;box-shadow:0 0 0 2px rgba(255,210,63,.25)}
+  .navcta:hover{background:var(--gold2);box-shadow:0 0 18px rgba(255,210,63,.5)}
   .menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
 
   /* Hero */
-  .hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,17,.55),rgba(14,14,17,.92)),url('images/webp/01-storefront.webp') center/cover;filter:saturate(1.05)}
-  .hero-inner{position:relative;padding:80px 0}
-  .eyebrow{display:inline-block;color:var(--gold);font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:.78rem;margin-bottom:18px;border:1px solid var(--line);padding:7px 14px;border-radius:999px;background:rgba(0,0,0,.3)}
-  .hero h1{font-size:clamp(3.4rem,9vw,7rem);text-shadow:0 4px 30px rgba(0,0,0,.5)}
+  .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden}
+  /* trippy layer: rotating rainbow conic swirl blended under the storefront photo */
+  .hero::before{content:"";position:absolute;inset:-30%;background:
+    conic-gradient(from 0deg,#ff3b3b,#ff8a00,#ffd23f,#3ddc6e,#3a86ff,#9b5de5,#ff3b3b);
+    filter:blur(60px) saturate(1.3);opacity:.55;animation:spin 40s linear infinite}
+  .hero::after{content:"";position:absolute;inset:0;background:
+    linear-gradient(180deg,rgba(18,13,28,.5),rgba(18,13,28,.92)),
+    url('images/webp/01-storefront.webp') center/cover;mix-blend-mode:normal;opacity:.92}
+  .hero-inner{position:relative;z-index:1;padding:80px 0}
+  .eyebrow{display:inline-block;color:#2a1a05;font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.74rem;margin-bottom:18px;padding:7px 14px;border-radius:999px;background:var(--gold)}
+  .hero h1.logo{font-size:clamp(4rem,13vw,9rem);margin:6px 0 0}
+  .smokeshop{font-family:'Fredoka',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.18em;
+    font-size:clamp(1.3rem,3.4vw,2.1rem);color:#ff5d3b;
+    text-shadow:0 0 1px #b81d00,2px 2px 0 rgba(0,0,0,.35);margin:2px 0 6px}
   .hero p.lead{max-width:560px;color:#d3d3db;font-size:1.15rem;margin:18px 0 32px}
   .btn-row{display:flex;gap:14px;flex-wrap:wrap}
   .btn{padding:14px 26px;border-radius:999px;font-weight:700;font-size:.95rem;transition:.2s;display:inline-flex;align-items:center;gap:8px}
@@ -56,33 +99,40 @@
   section{padding:90px 0}
   .sec-head{text-align:center;max-width:680px;margin:0 auto 54px}
   .sec-head .eyebrow{margin-bottom:14px}
-  .sec-head h2{font-size:clamp(2.4rem,5vw,3.6rem)}
+  .sec-head h2{font-size:clamp(2.4rem,5vw,3.6rem);background:var(--rainbow);background-size:200% auto;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:hue 9s linear infinite}
   .sec-head p{color:var(--muted);margin-top:12px}
+  .sec-head .rainbow-rule{width:90px;margin-top:18px}
 
   /* About */
   .about{background:var(--bg2)}
   .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
-  .about h2{font-size:clamp(2.4rem,5vw,3.6rem);margin-bottom:18px}
-  .about p{color:#c8c8d2;margin-bottom:16px}
+  .about h2{font-size:clamp(2.4rem,5vw,3.6rem);margin-bottom:18px;background:var(--rainbow);background-size:200% auto;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:hue 9s linear infinite}
+  .about p{color:#d6cdf0;margin-bottom:16px}
   .stats{display:flex;gap:34px;margin-top:28px}
-  .stat .n{font-family:'Bebas Neue';font-size:2.6rem;color:var(--gold);line-height:1}
+  .stat .n{font-family:'Fredoka';font-weight:700;font-size:2.6rem;color:var(--gold);line-height:1}
+  .stat:nth-child(2) .n{color:#3ddc6e}
+  .stat:nth-child(3) .n{color:#3a86ff}
   .stat .l{color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
-  .about-img{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+  .about-img{border-radius:16px;overflow:hidden;border:3px solid transparent;background:var(--rainbow) border-box;background-size:200% auto;animation:hue 9s linear infinite;box-shadow:0 30px 60px rgba(0,0,0,.45)}
   .about-img img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5}
 
   /* Products */
   .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 22px;transition:.25s}
-  .pcard:hover{border-color:var(--gold);transform:translateY(-4px);background:#20202a}
+  .pcard{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px 22px 26px;transition:.25s}
+  .pcard::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--rainbow);background-size:200% auto;transform:scaleX(0);transform-origin:left;transition:transform .3s;animation:hue 9s linear infinite}
+  .pcard:hover{border-color:#5a3fa0;transform:translateY(-5px);background:#281a4d;box-shadow:0 16px 40px rgba(155,93,229,.25)}
+  .pcard:hover::before{transform:scaleX(1)}
   .pcard .ico{font-size:1.9rem;margin-bottom:14px}
-  .pcard h3{font-size:1.5rem;letter-spacing:.04em}
+  .pcard h3{font-size:1.5rem;font-weight:600}
   .pcard p{color:var(--muted);font-size:.88rem;margin-top:4px}
 
   /* Gallery */
   .gallery{background:var(--bg2)}
   .grid-mason{columns:3;column-gap:16px}
-  .grid-mason img{width:100%;border-radius:12px;margin-bottom:16px;display:block;border:1px solid var(--line);transition:.3s;cursor:pointer}
-  .grid-mason img:hover{transform:scale(1.02);border-color:var(--gold)}
+  .grid-mason img{width:100%;border-radius:12px;margin-bottom:16px;display:block;border:3px solid transparent;transition:.3s;cursor:pointer}
+  .grid-mason img:hover{transform:scale(1.02) rotate(-.6deg);border-color:#ffd23f;box-shadow:0 0 0 3px #ff3b3b,0 0 0 6px #3a86ff}
 
   /* Visit */
   .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
@@ -107,16 +157,18 @@
   .rcard .who{margin-top:16px;color:var(--muted);font-size:.83rem;font-style:normal}
 
   /* CTA */
-  .cta{text-align:center;background:linear-gradient(135deg,#1d1a12,#0e0e11)}
-  .cta h2{font-size:clamp(2.6rem,6vw,4.4rem)}
-  .cta p{color:var(--muted);max-width:520px;margin:14px auto 30px}
+  .cta{position:relative;text-align:center;overflow:hidden;background:#160f28}
+  .cta::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 90deg,#ff3b3b,#ff8a00,#ffd23f,#3ddc6e,#3a86ff,#9b5de5,#ff3b3b);filter:blur(80px);opacity:.35;animation:spin 36s linear infinite}
+  .cta .wrap{position:relative;z-index:1}
+  .cta h2{font-size:clamp(2.6rem,6vw,4.4rem);color:#fff}
+  .cta p{color:#d6cdf0;max-width:520px;margin:14px auto 30px}
 
-  footer{background:#0a0a0d;border-top:1px solid var(--line);padding:54px 0 30px}
+  footer{background:#0c0818;border-top:3px solid transparent;border-image:var(--rainbow) 1;padding:54px 0 30px}
   .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:36px}
   .foot-grid h4{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:16px;font-family:'Inter';font-weight:700}
   .foot-grid a,.foot-grid p{color:var(--muted);font-size:.92rem;display:block;margin-bottom:9px}
   .foot-grid a:hover{color:var(--gold)}
-  .foot-brand{font-family:'Bebas Neue';font-size:2rem;letter-spacing:.06em;margin-bottom:10px}
+  .foot-brand{font-size:2.4rem;margin-bottom:12px;line-height:1}
   .foot-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#67676f;font-size:.8rem}
   .disclaimer{background:#161109;border:1px solid #3a2c12;color:#c9a45e;font-size:.8rem;border-radius:10px;padding:14px 18px;margin-bottom:30px;text-align:center}
 
@@ -141,7 +193,7 @@
 
 <header>
   <nav class="wrap">
-    <a href="#top" class="brand">FATTY'S<span class="gold">.</span></a>
+    <a href="#top" class="brand logo">fatty's</a>
     <div class="navlinks">
       <a href="#about">About</a>
       <a href="#products">Products</a>
@@ -158,7 +210,8 @@
 <section class="hero" id="top">
   <div class="wrap hero-inner">
     <span class="eyebrow">San Marcos, TX · Since 2007</span>
-    <h1>Your Neighborhood<br>Smoke Shop</h1>
+    <h1 class="logo logo-burst">fatty's</h1>
+    <div class="smokeshop">Smoke Shop</div>
     <p class="lead">Vapes, hookah, glass, CBD, kratom & more — a deep selection and straight-talking staff, right by Texas State University.</p>
     <div class="btn-row">
       <a href="#products" class="btn btn-primary">Browse the Selection →</a>
@@ -298,7 +351,7 @@
     <div class="disclaimer">⚠ Tobacco / nicotine / alternative products are for adults 21 years of age and older. Underage sales are strictly prohibited. Not for sale to minors. These statements have not been evaluated by the FDA.</div>
     <div class="foot-grid">
       <div>
-        <div class="foot-brand">FATTY'S<span class="gold">.</span></div>
+        <div class="foot-brand logo">fatty's</div>
         <p>San Marcos's neighborhood smoke shop since 2007. Vapes, hookah, glass, CBD, kratom, cigars & accessories.</p>
       </div>
       <div>
@@ -354,7 +407,7 @@
   .modal-ico{font-size:2.4rem;margin-bottom:6px}
   .modal h3{font-size:2rem;letter-spacing:.04em}
   .modal-sub{color:var(--muted);font-size:.92rem;margin-top:4px}
-  .modal-number{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.05em;color:var(--gold);
+  .modal-number{font-family:'Fredoka',sans-serif;font-weight:700;font-size:2rem;letter-spacing:.03em;color:var(--gold);
     margin:18px 0 24px;user-select:all}
   .modal-actions{display:flex;flex-direction:column;gap:12px}
   .modal-btn{justify-content:center;width:100%;cursor:pointer;font-family:inherit}
