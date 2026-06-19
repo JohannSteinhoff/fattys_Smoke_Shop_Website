@@ -131,6 +131,19 @@
   .hero-meta{display:flex;gap:28px;margin-top:72px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
   .hero-meta b{color:var(--text)}
 
+  /* Live open/closed status pill */
+  .hero .status-pill{position:relative;z-index:3}
+  .status-pill{display:inline-flex;align-items:center;gap:11px;margin-top:18px;padding:9px 18px 9px 16px;border-radius:999px;font-size:.92rem;border:1px solid var(--line);background:rgba(255,255,255,.04);backdrop-filter:blur(6px)}
+  .status-pill .status-dot{position:relative;flex:none;width:9px;height:9px;border-radius:50%}
+  .status-pill .status-dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:statusPulse 2.2s ease-out infinite}
+  .status-pill .status-state{font-weight:700;letter-spacing:.01em}
+  .status-pill .status-sub{color:var(--muted);font-weight:500;margin-left:7px}
+  .status-pill.is-open{color:#a7f0c4}
+  .status-pill.is-open .status-dot{background:#33d98a;box-shadow:0 0 10px rgba(51,217,138,.7)}
+  .status-pill.is-closed{color:#ffb4ab}
+  .status-pill.is-closed .status-dot{background:#ff5a4d;box-shadow:0 0 10px rgba(255,90,77,.6)}
+  @keyframes statusPulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(3.2);opacity:0}}
+
   section{padding:90px 0}
   .sec-head{text-align:center;max-width:680px;margin:0 auto 54px}
   .sec-head .eyebrow{margin-bottom:14px}
@@ -174,9 +187,12 @@
   .infobox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px}
   .infobox h3{font-size:1.7rem;margin-bottom:20px;letter-spacing:.04em}
   .hours{width:100%;border-collapse:collapse}
-  .hours td{padding:11px 0;border-bottom:1px solid var(--line);font-size:.95rem}
-  .hours td:last-child{text-align:right;color:var(--gold);font-weight:600}
+  .hours td{padding:11px 0;border-bottom:1px solid var(--line);font-size:.95rem;color:#fff}
+  .hours td:last-child{text-align:right}
   .hours tr:last-child td{border-bottom:0}
+  .hours tr.today td{color:var(--gold);font-weight:700;background:rgba(255,210,63,.1);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold)}
+  .hours tr.today td:first-child{padding-left:14px;border-left:2px solid var(--gold)}
+  .hours tr.today td:last-child{color:var(--gold);padding-right:14px;border-right:2px solid var(--gold)}
   .contact-line{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.98rem}
   .contact-line:last-child{border-bottom:0}
   .contact-line .ic{color:var(--gold);width:24px;text-align:center}
@@ -248,7 +264,7 @@
       <a href="#products" onclick="closeMenu()">Products</a>
       <a href="#gallery" onclick="closeMenu()">Gallery</a>
       <a href="#reviews" onclick="closeMenu()">Reviews</a>
-      <a href="#visit" onclick="closeMenu()">Visit</a>
+      <a href="#visit" onclick="closeMenu()">Store Hours</a>
       <button type="button" class="navlinks-call" onclick="closeMenu();openCall()">📞 Call (512) 667-6413</button>
     </div>
     <button type="button" class="navcta" onclick="openCall()">📞 Call (512) 667-6413</button>
@@ -260,6 +276,10 @@
 <section class="hero" id="top">
   <div class="wrap hero-inner">
     <span class="eyebrow">San Marcos, TX · Since 2007</span>
+    <div class="status-pill" id="statusPill" hidden>
+      <span class="status-dot"></span>
+      <span class="status-text"><b class="status-state"></b><span class="status-sub"></span></span>
+    </div>
     <h1 class="logo logo-burst">fatty's</h1>
     <div class="smokeshop">Smoke Shop</div>
     <p class="lead">Vapes, hookah, glass, CBD, kratom <span class="amp">&amp;</span> more — a deep selection and a chill, clued-in crew. Less than 10 minutes from Texas State.</p>
@@ -269,7 +289,6 @@
     </div>
     <div class="hero-meta">
       <span>⭐ <b>4.0</b> · 37 Yelp reviews</span>
-      <span>🕒 Open <b>til Midnight</b></span>
       <span>📦 <b>8+</b> product categories</span>
     </div>
   </div>
@@ -364,13 +383,13 @@
       <div class="infobox">
         <h3>Store Hours</h3>
         <table class="hours">
-          <tr><td>Monday</td><td>9:00 AM – 12:00 AM</td></tr>
-          <tr><td>Tuesday</td><td>9:00 AM – 12:00 AM</td></tr>
-          <tr><td>Wednesday</td><td>9:00 AM – 12:00 AM</td></tr>
-          <tr><td>Thursday</td><td>9:00 AM – 12:00 AM</td></tr>
-          <tr><td>Friday</td><td>9:00 AM – 12:00 AM</td></tr>
-          <tr><td>Saturday</td><td>9:00 AM – 12:00 AM</td></tr>
-          <tr><td>Sunday</td><td>10:00 AM – 11:00 PM</td></tr>
+          <tr data-day="1"><td>Monday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr data-day="2"><td>Tuesday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr data-day="3"><td>Wednesday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr data-day="4"><td>Thursday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr data-day="5"><td>Friday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr data-day="6"><td>Saturday</td><td>9:00 AM – 12:00 AM</td></tr>
+          <tr data-day="0"><td>Sunday</td><td>10:00 AM – 11:00 PM</td></tr>
         </table>
         <div style="margin-top:24px">
           <div class="contact-line"><span class="ic">📍</span> 1330 Aquarena Springs Dr, Ste 105, San Marcos, TX 78666</div>
@@ -475,6 +494,68 @@
 </style>
 
 <script>
+  // Store hours, in minutes from midnight (day 0 = Sunday). close 1440 = midnight.
+  var STORE_HOURS = {
+    0:{open:600, close:1380},               // Sun 10:00 AM – 11:00 PM
+    1:{open:540, close:1440}, 2:{open:540, close:1440}, 3:{open:540, close:1440},
+    4:{open:540, close:1440}, 5:{open:540, close:1440}, 6:{open:540, close:1440}
+  };
+
+  // Highlight the current day in the Store Hours table
+  (function(){
+    var today = new Date().getDay();
+    var row = document.querySelector('.hours tr[data-day="' + today + '"]');
+    if(row){ row.classList.add('today'); }
+  })();
+
+  // Live "Open now / Closed" status pill in the hero
+  (function(){
+    var pill = document.getElementById('statusPill');
+    if(!pill) return;
+    var stateEl = pill.querySelector('.status-state');
+    var subEl = pill.querySelector('.status-sub');
+
+    function fmt(mins){
+      if(mins < 60) return mins + ' min';
+      var h = Math.floor(mins/60), m = mins % 60;
+      if(h < 24) return h + 'h' + (m ? ' ' + m + 'm' : '');
+      var d = Math.floor(h/24), rh = h % 24;
+      return d + ' day' + (d>1?'s':'') + (rh ? ' ' + rh + 'h' : '');
+    }
+
+    function render(){
+      var now = new Date();
+      var day = now.getDay();
+      var mins = now.getHours()*60 + now.getMinutes();
+      var t = STORE_HOURS[day];
+
+      if(t && mins >= t.open && mins < t.close){
+        pill.classList.add('is-open');
+        pill.classList.remove('is-closed');
+        stateEl.textContent = 'Open now';
+        subEl.textContent = '· closes in ' + fmt(t.close - mins);
+      } else {
+        pill.classList.add('is-closed');
+        pill.classList.remove('is-open');
+        stateEl.textContent = 'Closed';
+        // find the next opening within the coming week
+        var until = null;
+        for(var i = 0; i < 8; i++){
+          var d = (day + i) % 7;
+          var h = STORE_HOURS[d];
+          if(!h) continue;
+          var openAbs = i*1440 + h.open;
+          if(openAbs > mins){ until = openAbs - mins; break; }
+        }
+        subEl.textContent = until === null ? '' : '· opens in ' + fmt(until);
+      }
+      pill.hidden = false;
+    }
+
+    render();
+    setInterval(render, 60000); // keep the countdown fresh
+  })();
+
   // Mobile dropdown menu
   var navLinksEl = document.getElementById('navlinks');
   var menuToggleEl = document.getElementById('menuToggle');
