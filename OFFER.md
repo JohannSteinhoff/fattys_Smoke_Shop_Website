@@ -18,9 +18,11 @@
 - **Cancel anytime.** If you stop the plan, the website stays live on its free address.
 
 ## If I ever stop hosting your site
-- You're never stranded. If you're on the custom-domain plan, I'll **transfer the domain into
-  your name** for the registrar's yearly cost (~$12/yr), so you keep your web address and can
-  host it anywhere you like.
+- You're never stranded. I'll **hand over all of the website files** (the complete `.html`
+  site and images) so you can continue hosting it anywhere you like, or pass it to another
+  developer — it works on any host with no special setup.
+- If you're on the custom-domain plan, I'll also **transfer the domain into your name** for
+  the registrar's yearly cost (~$12/yr), so you keep your web address.
 - The website stays yours either way.
 
 ---

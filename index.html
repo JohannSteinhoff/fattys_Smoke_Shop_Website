@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="assets/logo-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#120d1c; --bg2:#181030; --card:#20153f; --line:#3a2a63;
@@ -27,30 +27,37 @@
   .gold{color:var(--gold)}
 
   /* ===== Recreated "fatty's" bubble wordmark ===== */
-  /* Groovy 70s bubble lettering: gold fill, green outline, rainbow halo —
-     mirrors the storefront mural & sign. */
+  /* Matches the storefront neon sign: green bubble letters dotted with pale
+     circles, a glowing yellow outline, on a dark night-blue backdrop. */
   .logo{
-    font-family:'Bagel Fat One',cursive;font-weight:400;text-transform:lowercase;
+    font-family:'Titan One',cursive;font-weight:400;text-transform:none;
     /* line-height + padding give descenders (e.g. the y) room inside the box so
-       the clipped gradient fill reaches them instead of cutting off */
+       the clipped pattern fill reaches them instead of cutting off */
     line-height:1.05;padding-bottom:.2em;
-    background:linear-gradient(178deg,#fff6c2 6%,#ffe66d 38%,#ffc21c 72%,#ffae00);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffd23f;
-    -webkit-text-stroke:2px #1c6b2e;
-    filter:
-      drop-shadow(2px 0 0 #e63946) drop-shadow(-2px 0 0 #3a86ff)
-      drop-shadow(0 2px 0 #9b5de5) drop-shadow(0 -2px 0 #06d6a0)
-      drop-shadow(0 0 10px rgba(255,120,210,.45));
+    background:
+      radial-gradient(circle at 50% 50%, #ecffd6 0 5.5px, rgba(236,255,214,0) 6.4px) 0 0/24px 24px,
+      linear-gradient(180deg,#5fe87a 0%,#2bbf57 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#3ddc6e;
+    -webkit-text-stroke:4px #ffd60a;
+    /* base wordmark: crisp edge, no glow (used by the small nav/footer logos) */
+    filter:drop-shadow(0 0 1px #6b5400);
   }
-  /* Hero wordmark sits on a radiating rainbow burst like the wall mural.
-     Kept tight behind the word and non-interactive so it never covers copy. */
+  /* only the big hero title gets the lit-neon glow */
+  .hero h1.logo{filter:
+    drop-shadow(0 0 1px #6b5400)
+    drop-shadow(0 0 6px rgba(255,214,10,.65))
+    drop-shadow(0 0 14px rgba(255,205,0,.5))
+    drop-shadow(0 0 28px rgba(255,200,0,.32));}
+  /* the small nav/footer logos: thinner outline so they don't look chunky */
+  .brand,.foot-brand{-webkit-text-stroke-width:1px}
+  /* Hero wordmark sits on a soft night-blue glow so the neon green letters pop,
+     like the lit sign on a dark sky. Non-interactive so it never covers copy. */
   .logo-burst{position:relative;display:inline-block;isolation:isolate}
   /* ovular halo tied to the word box; the elliptical shape makes the spin visible */
   .logo-burst::before{content:"";position:absolute;inset:-40% -24%;z-index:-1;border-radius:50%;pointer-events:none;
-    background:repeating-radial-gradient(circle at 50% 50%,
-      #ff3b3b 0 18px,#ff8a00 18px 36px,#ffd23f 36px 54px,#3ddc6e 54px 72px,
-      #06b6d4 72px 90px,#3a86ff 90px 108px,#9b5de5 108px 126px,#ff5dab 126px 144px);
-    opacity:.6;filter:blur(1px) saturate(2);mix-blend-mode:screen;
+    background:radial-gradient(circle at 50% 50%,
+      rgba(58,134,255,.45) 0%, rgba(40,90,200,.28) 38%, rgba(20,40,100,0) 72%);
+    opacity:.9;filter:blur(2px);mix-blend-mode:screen;
     -webkit-mask:radial-gradient(closest-side,#000 0%,rgba(0,0,0,.55) 26%,rgba(0,0,0,.15) 50%,transparent 72%);
             mask:radial-gradient(closest-side,#000 0%,rgba(0,0,0,.55) 26%,rgba(0,0,0,.15) 50%,transparent 72%);
     animation:spin 28s linear infinite}
@@ -278,7 +285,7 @@
 
 <header>
   <nav class="wrap">
-    <a href="#top" class="brand logo">fatty's</a>
+    <a href="#top" class="brand logo">Fatty's</a>
     <div class="navlinks" id="navlinks">
       <a href="#about" onclick="closeMenu()">About</a>
       <a href="#products" onclick="closeMenu()">Products</a>
@@ -310,7 +317,7 @@
       <span class="status-dot"></span>
       <span class="status-text"><b class="status-state"></b><span class="status-sub"></span></span>
     </div>
-    <h1 class="logo logo-burst">fatty's</h1>
+    <h1 class="logo logo-burst">Fatty's</h1>
     <div class="smokeshop">Smoke Shop</div>
     <p class="lead">Vapes, hookah, glass, CBD, kratom <span class="amp">&amp;</span> more — a deep selection and a chill, clued-in crew. Less than 10 minutes from Texas State.</p>
     <div class="btn-row">
@@ -454,7 +461,7 @@
     <div class="disclaimer">⚠ Tobacco / nicotine / alternative products are for adults 21 years of age and older. Underage sales are strictly prohibited. Not for sale to minors. These statements have not been evaluated by the FDA.</div>
     <div class="foot-grid">
       <div>
-        <div style="display:flex;align-items:center"><img class="foot-mascot" src="assets/logo.webp" alt="Fatty's Ganesha logo" width="54" height="54"><span class="foot-brand logo">fatty's</span></div>
+        <div style="display:flex;align-items:center"><img class="foot-mascot" src="assets/logo.webp" alt="Fatty's Ganesha logo" width="54" height="54"><span class="foot-brand logo">Fatty's</span></div>
         <p>San Marcos's neighborhood smoke shop since 2007. Vapes, hookah, glass, CBD, kratom, cigars & accessories.</p>
       </div>
       <div>
